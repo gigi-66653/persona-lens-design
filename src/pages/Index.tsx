@@ -158,8 +158,14 @@ const demoPersonas: PersonaData[] = [
 
 const Index = () => {
   const navigate = useNavigate();
+  const [drawerPersona, setDrawerPersona] = useState<PersonaData | null>(null);
+
   const handleSelect = (persona: PersonaData) => {
     navigate("/hypothesis", { state: { personaName: persona.name } });
+  };
+
+  const handleExplore = (persona: PersonaData) => {
+    setDrawerPersona(persona);
   };
 
   return (
@@ -200,6 +206,7 @@ const Index = () => {
                   key={persona.name}
                   {...persona}
                   onSelect={handleSelect}
+                  onExplore={handleExplore}
                 />
               );
             });
@@ -208,6 +215,11 @@ const Index = () => {
         </div>
       </div>
 
+      <PersonaDrawer
+        persona={drawerPersona}
+        open={!!drawerPersona}
+        onClose={() => setDrawerPersona(null)}
+      />
     </div>
   );
 };
