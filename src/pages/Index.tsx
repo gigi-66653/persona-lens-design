@@ -2,7 +2,7 @@ import { useState } from "react";
 import PersonaCard from "@/components/PersonaCard";
 import PersonaDrawer from "@/components/PersonaDrawer";
 import type { PersonaData } from "@/components/PersonaCard";
-import { Heart, Shield, Star, TrendingUp } from "lucide-react";
+import { Target, Shield } from "lucide-react";
 
 const demoPersonas: PersonaData[] = [
   {
@@ -11,8 +11,8 @@ const demoPersonas: PersonaData[] = [
       "Quality-driven urban millennials who value personal growth, seek meaningful experiences, and prioritize intentional consumption over impulse buying.",
     coreDimensions: ["Self-Driven", "Quality-First", "Experience-Led"],
     brandRelations: [
-      { label: "Loyalty", value: "High — Core loyalist", icon: <Heart className="h-3.5 w-3.5" /> },
-      { label: "Trust", value: "Brand value advocate", icon: <Shield className="h-3.5 w-3.5" /> },
+      { label: "Driver", value: "Values-aligned quality", icon: <Target className="h-3.5 w-3.5" /> },
+      { label: "Trust", value: "Brand philosophy advocate", icon: <Shield className="h-3.5 w-3.5" /> },
     ],
     postsCount: 1243,
     expandedData: {
@@ -40,8 +40,8 @@ const demoPersonas: PersonaData[] = [
       "Highly active sharers and opinion spreaders who thrive on community building and hold strong peer influence within their social circles.",
     coreDimensions: ["Socially-Driven", "High Shareability", "Peer Influence"],
     brandRelations: [
-      { label: "Loyalty", value: "Medium — Occasional", icon: <Heart className="h-3.5 w-3.5" /> },
-      { label: "Influence", value: "KOC potential", icon: <TrendingUp className="h-3.5 w-3.5" /> },
+      { label: "Driver", value: "Peer validation & trends", icon: <Target className="h-3.5 w-3.5" /> },
+      { label: "Trust", value: "Community-endorsed", icon: <Shield className="h-3.5 w-3.5" /> },
     ],
     postsCount: 3876,
     expandedData: {
@@ -70,8 +70,8 @@ const demoPersonas: PersonaData[] = [
       "Rational, research-heavy consumers driven by word-of-mouth and price sensitivity. They compare extensively before committing to a purchase.",
     coreDimensions: ["Rational", "WOM-Driven", "Price-Sensitive"],
     brandRelations: [
-      { label: "Loyalty", value: "Low — Price-switcher", icon: <Heart className="h-3.5 w-3.5" /> },
-      { label: "Retention", value: "Promo-activated", icon: <Star className="h-3.5 w-3.5" /> },
+      { label: "Driver", value: "Price-performance ratio", icon: <Target className="h-3.5 w-3.5" /> },
+      { label: "Trust", value: "Data & reviews backed", icon: <Shield className="h-3.5 w-3.5" /> },
     ],
     postsCount: 892,
     expandedData: {
@@ -99,8 +99,8 @@ const demoPersonas: PersonaData[] = [
       "Early adopters obsessed with what's next. They follow cultural shifts closely and are first to try new products, driven by novelty and status.",
     coreDimensions: ["Trend-Forward", "Status-Seeking", "Early Adopter"],
     brandRelations: [
-      { label: "Loyalty", value: "Low — Novelty-driven", icon: <Heart className="h-3.5 w-3.5" /> },
-      { label: "Influence", value: "Trendsetter", icon: <TrendingUp className="h-3.5 w-3.5" /> },
+      { label: "Driver", value: "Novelty & exclusivity", icon: <Target className="h-3.5 w-3.5" /> },
+      { label: "Trust", value: "KOL-validated", icon: <Shield className="h-3.5 w-3.5" /> },
     ],
     postsCount: 2104,
     expandedData: {
@@ -128,8 +128,8 @@ const demoPersonas: PersonaData[] = [
       "Low-profile but deeply committed consumers who rarely post but purchase consistently. Their lifetime value far exceeds their social visibility.",
     coreDimensions: ["High LTV", "Low Visibility", "Brand-Committed"],
     brandRelations: [
-      { label: "Loyalty", value: "Very High — Silent buyer", icon: <Heart className="h-3.5 w-3.5" /> },
-      { label: "Retention", value: "Organic repeat", icon: <Shield className="h-3.5 w-3.5" /> },
+      { label: "Driver", value: "Consistency & habit", icon: <Target className="h-3.5 w-3.5" /> },
+      { label: "Trust", value: "Deep experience-based", icon: <Shield className="h-3.5 w-3.5" /> },
     ],
     postsCount: 187,
     expandedData: {
