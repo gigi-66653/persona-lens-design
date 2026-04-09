@@ -1,29 +1,26 @@
 
 
-## Add Top Navigation + Step Indicator (All English)
+## 恢复 Persona Gallery 标题 + Headline
 
-### Overview
-Add two new sections above the Persona Gallery: a dark navigation bar and a step progress indicator. All text will be in **English** (the screenshot had Chinese — we'll translate everything).
+### 问题
+上一次实现 TopNav + StepIndicator 时，把原来的 "Persona Gallery" 标题和副标题 "Click a card to expand and view detailed dimension analysis" 删掉了。用户要求保留。
 
-### Components
+### 改动
 
-**1. `src/components/TopNav.tsx`** — Dark header bar
-- Left: Logo icon + "Virtual Persona" (Playfair Display serif) + subtitle "Hypothesis Validation Platform"
-- Right: Navigation links — "VALIDATION HISTORY", "PROXY LIBRARY", "DOCS" (uppercase, wide letter-spacing, magazine style)
+**`src/pages/Index.tsx`**：在 StepIndicator 下方、卡片网格上方，恢复原有的 header 区域：
 
-**2. `src/components/StepIndicator.tsx`** — Three-step flow
-- Step 1: "Persona Scope" — subtitle "Select target personas" (current/active)
-- Step 2: "Hypothesis Input" — subtitle "Define your hypothesis"
-- Step 3: "Validation Output" — subtitle "Review validation results"
-- Active step: solid dot + bold text; future steps: hollow dot + muted text; thin line connectors between steps
+```tsx
+<header className="mb-10 text-center">
+  <h1 className="text-3xl font-bold tracking-tight text-foreground">
+    Persona Gallery
+  </h1>
+  <p className="mt-2 text-muted-foreground">
+    Click a card to expand and view detailed dimension analysis
+  </p>
+</header>
+```
 
-**3. `src/pages/Index.tsx`** — Integration
-- Import and place TopNav + StepIndicator at top
-- Remove or simplify existing "Persona Gallery" header (redundant with step indicator)
-- Adjust top padding
+插入位置：`<div className="relative z-10 mx-auto max-w-5xl px-6 py-10">` 内部、grid 之前。
 
-### Design Notes
-- NavBar: dark background matching the sheet overlay aesthetic; links use the same uppercase tracking style as card labels
-- StepIndicator: light/white background, minimalist typography consistent with card design system
-- All text English per project language rule
+仅改 Index.tsx 一个文件。
 
