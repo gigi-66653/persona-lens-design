@@ -49,7 +49,7 @@ const PersonaDrawer = ({ persona, open, onClose }: PersonaDrawerProps) => {
     <Sheet open={open} onOpenChange={(v) => !v && onClose()}>
       <SheetContent
         side="right"
-        className="w-[420px] max-w-[90vw] p-0 border-l border-[hsl(var(--persona-glass-border))] bg-[hsl(var(--persona-glass))] backdrop-blur-2xl"
+        className="w-[540px] max-w-[90vw] p-0 border-l border-[hsl(var(--persona-glass-border))] bg-[hsl(var(--persona-glass))] backdrop-blur-2xl"
       >
         {persona && (
           <ScrollArea className="h-full">
