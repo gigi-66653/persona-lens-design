@@ -1,6 +1,8 @@
 import { useState } from "react";
 import PersonaCard from "@/components/PersonaCard";
 import PersonaDrawer from "@/components/PersonaDrawer";
+import TopNav from "@/components/TopNav";
+import StepIndicator from "@/components/StepIndicator";
 import type { PersonaData } from "@/components/PersonaCard";
 import { Target, Shield } from "lucide-react";
 
@@ -158,20 +160,15 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <TopNav />
+      <StepIndicator currentStep={1} />
+
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
         <div className="absolute top-1/2 -left-40 h-80 w-80 rounded-full bg-accent/30 blur-3xl" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-5xl px-6 py-16">
-        <header className="mb-12 text-center">
-          <h1 className="text-3xl font-bold tracking-tight text-foreground">
-            Persona Gallery
-          </h1>
-          <p className="mt-2 text-muted-foreground">
-            Click a card to view detailed dimension analysis
-          </p>
-        </header>
+      <div className="relative z-10 mx-auto max-w-5xl px-6 py-10">
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {(() => {
