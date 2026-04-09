@@ -24,7 +24,7 @@ const suggestedConcepts = [
 const HypothesisInput = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const persona = location.state?.persona;
+  const personaName = location.state?.personaName as string | undefined;
 
   const [hypothesis, setHypothesis] = useState("");
   const [conceptInput, setConceptInput] = useState("");
@@ -59,7 +59,7 @@ const HypothesisInput = () => {
             Back
           </button>
 
-          {persona && (
+          {personaName && (
             <>
               <div className="h-6 w-px bg-border" />
               <div className="flex items-center gap-3">
@@ -68,7 +68,7 @@ const HypothesisInput = () => {
                 </div>
                 <div className="leading-tight">
                   <p className="text-sm font-medium text-foreground">
-                    {persona.name}
+                    {personaName}
                   </p>
                   <p className="text-[10px] uppercase tracking-widest text-muted-foreground/60">
                     P001

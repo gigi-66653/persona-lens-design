@@ -157,7 +157,7 @@ const demoPersonas: PersonaData[] = [
 const Index = () => {
   const navigate = useNavigate();
   const handleSelect = (persona: PersonaData) => {
-    navigate("/hypothesis", { state: { persona } });
+    navigate("/hypothesis", { state: { personaName: persona.name } });
   };
 
   return (
