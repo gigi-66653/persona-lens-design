@@ -1,3 +1,5 @@
+import { Check } from "lucide-react";
+
 const steps = [
   { number: 1, title: "Persona Scope", subtitle: "Select target personas" },
   { number: 2, title: "Hypothesis Input", subtitle: "Define your hypothesis" },
@@ -29,7 +31,7 @@ const StepIndicator = ({ currentStep = 1 }: StepIndicatorProps) => {
                         : "border-border text-muted-foreground"
                   }`}
                 >
-                  {step.number}
+                  {isPast ? <Check className="h-3.5 w-3.5" /> : step.number}
                 </div>
 
                 {/* Text */}

@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import PersonaCard from "@/components/PersonaCard";
-import PersonaDrawer from "@/components/PersonaDrawer";
 import TopNav from "@/components/TopNav";
 import StepIndicator from "@/components/StepIndicator";
 import type { PersonaData } from "@/components/PersonaCard";
@@ -156,7 +155,10 @@ const demoPersonas: PersonaData[] = [
 ];
 
 const Index = () => {
-  const [selectedPersona, setSelectedPersona] = useState<PersonaData | null>(null);
+  const navigate = useNavigate();
+  const handleSelect = (persona: PersonaData) => {
+    navigate("/hypothesis", { state: { persona } });
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -195,7 +197,7 @@ const Index = () => {
                 <PersonaCard
                   key={persona.name}
                   {...persona}
-                  onSelect={setSelectedPersona}
+                  onSelect={handleSelect}
                 />
               );
             });
@@ -204,11 +206,6 @@ const Index = () => {
         </div>
       </div>
 
-      <PersonaDrawer
-        persona={selectedPersona}
-        open={!!selectedPersona}
-        onClose={() => setSelectedPersona(null)}
-      />
     </div>
   );
 };
