@@ -13,6 +13,12 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+      },
+      letterSpacing: {
+        'ultra-wide': '0.25em',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
