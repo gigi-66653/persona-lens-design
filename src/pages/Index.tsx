@@ -1,12 +1,15 @@
+import { useState } from "react";
 import PersonaCard from "@/components/PersonaCard";
+import PersonaDrawer from "@/components/PersonaDrawer";
+import type { PersonaData } from "@/components/PersonaCard";
 import { Heart, Shield, Star, TrendingUp } from "lucide-react";
 
-const demoPersonas = [
+const demoPersonas: PersonaData[] = [
   {
     name: "The Mindful Explorer",
     description:
       "Quality-driven urban millennials who value personal growth, seek meaningful experiences, and prioritize intentional consumption over impulse buying.",
-    coreDimensions: ["Self-Driven", "Quality-First", "Experience-Led"] as [string, string, string],
+    coreDimensions: ["Self-Driven", "Quality-First", "Experience-Led"],
     brandRelations: [
       { label: "Loyalty", value: "High — Core loyalist", icon: <Heart className="h-3.5 w-3.5" /> },
       { label: "Trust", value: "Brand value advocate", icon: <Shield className="h-3.5 w-3.5" /> },
@@ -35,7 +38,7 @@ const demoPersonas = [
     name: "The Social Connector",
     description:
       "Highly active sharers and opinion spreaders who thrive on community building and hold strong peer influence within their social circles.",
-    coreDimensions: ["Socially-Driven", "High Shareability", "Peer Influence"] as [string, string, string],
+    coreDimensions: ["Socially-Driven", "High Shareability", "Peer Influence"],
     brandRelations: [
       { label: "Loyalty", value: "Medium — Occasional", icon: <Heart className="h-3.5 w-3.5" /> },
       { label: "Influence", value: "KOC potential", icon: <TrendingUp className="h-3.5 w-3.5" /> },
@@ -65,7 +68,7 @@ const demoPersonas = [
     name: "The Value Seeker",
     description:
       "Rational, research-heavy consumers driven by word-of-mouth and price sensitivity. They compare extensively before committing to a purchase.",
-    coreDimensions: ["Rational", "WOM-Driven", "Price-Sensitive"] as [string, string, string],
+    coreDimensions: ["Rational", "WOM-Driven", "Price-Sensitive"],
     brandRelations: [
       { label: "Loyalty", value: "Low — Price-switcher", icon: <Heart className="h-3.5 w-3.5" /> },
       { label: "Retention", value: "Promo-activated", icon: <Star className="h-3.5 w-3.5" /> },
@@ -94,7 +97,7 @@ const demoPersonas = [
     name: "The Trend Chaser",
     description:
       "Early adopters obsessed with what's next. They follow cultural shifts closely and are first to try new products, driven by novelty and status.",
-    coreDimensions: ["Trend-Forward", "Status-Seeking", "Early Adopter"] as [string, string, string],
+    coreDimensions: ["Trend-Forward", "Status-Seeking", "Early Adopter"],
     brandRelations: [
       { label: "Loyalty", value: "Low — Novelty-driven", icon: <Heart className="h-3.5 w-3.5" /> },
       { label: "Influence", value: "Trendsetter", icon: <TrendingUp className="h-3.5 w-3.5" /> },
@@ -123,7 +126,7 @@ const demoPersonas = [
     name: "The Quiet Loyalist",
     description:
       "Low-profile but deeply committed consumers who rarely post but purchase consistently. Their lifetime value far exceeds their social visibility.",
-    coreDimensions: ["High LTV", "Low Visibility", "Brand-Committed"] as [string, string, string],
+    coreDimensions: ["High LTV", "Low Visibility", "Brand-Committed"],
     brandRelations: [
       { label: "Loyalty", value: "Very High — Silent buyer", icon: <Heart className="h-3.5 w-3.5" /> },
       { label: "Retention", value: "Organic repeat", icon: <Shield className="h-3.5 w-3.5" /> },
@@ -151,6 +154,8 @@ const demoPersonas = [
 ];
 
 const Index = () => {
+  const [selectedPersona, setSelectedPersona] = useState<PersonaData | null>(null);
+
   return (
     <div className="min-h-screen bg-background">
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
@@ -164,7 +169,7 @@ const Index = () => {
             Persona Gallery
           </h1>
           <p className="mt-2 text-muted-foreground">
-            Click a card to expand and view detailed dimension analysis
+            Click a card to view detailed dimension analysis
           </p>
         </header>
 
@@ -180,12 +185,24 @@ const Index = () => {
                   items.push(<div key={`placeholder-${p}`} className="hidden lg:block" />);
                 }
               }
-              items.push(<PersonaCard key={persona.name} {...persona} />);
+              items.push(
+                <PersonaCard
+                  key={persona.name}
+                  {...persona}
+                  onSelect={setSelectedPersona}
+                />
+              );
             });
             return items;
           })()}
         </div>
       </div>
+
+      <PersonaDrawer
+        persona={selectedPersona}
+        open={!!selectedPersona}
+        onClose={() => setSelectedPersona(null)}
+      />
     </div>
   );
 };
