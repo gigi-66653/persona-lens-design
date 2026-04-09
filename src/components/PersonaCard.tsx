@@ -58,16 +58,10 @@ const PersonaCard = ({
         {/* Ultra-thin divider */}
         <div className="my-6 h-px bg-border/40" />
 
-        {/* Layer 3: Core Dimensions — editorial grid */}
-        <div className="grid grid-cols-3 gap-2">
-          {coreDimensions.map((dim) => (
-            <span
-              key={dim}
-              className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground"
-            >
-              {dim}
-            </span>
-          ))}
+        {/* Layer 3: Core Dimensions — inline editorial */}
+        <p className="text-[10px] font-medium uppercase tracking-widest leading-relaxed text-muted-foreground">
+          {coreDimensions.join("  ·  ")}
+        </p>
         </div>
 
         {/* Ultra-thin divider */}
