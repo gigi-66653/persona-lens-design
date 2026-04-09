@@ -57,6 +57,10 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        persona: {
+          tag: "hsl(var(--persona-tag))",
+          "tag-foreground": "hsl(var(--persona-tag-foreground))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
