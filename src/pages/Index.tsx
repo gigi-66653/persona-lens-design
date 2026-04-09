@@ -12,12 +12,24 @@ const demoPersonas = [
       { label: "Trust", value: "Brand value advocate", icon: <Shield className="h-3.5 w-3.5" /> },
     ],
     postsCount: 1243,
-    expandedDetails: [
-      { label: "Avg. Engagement", value: "8.7%" },
-      { label: "Content Pref.", value: "Long-form" },
-      { label: "Peak Hours", value: "8–11 PM" },
-      { label: "Conversion", value: "★★★★★" },
-    ],
+    expandedData: {
+      whoTheyAre: [
+        { title: "Anxiety Level", items: [{ label: "High", value: 62 }, { label: "Moderate", value: 28 }, { label: "Low", value: 10 }] },
+        { title: "Trigger Event", items: [{ label: "Life transitions", value: 45 }, { label: "Peer recommendation", value: 35 }, { label: "Self-discovery", value: 20 }] },
+      ],
+      brandRelationship: {
+        bulletGroups: [
+          { title: "Top Purchase Drivers", items: [{ label: "Brand values alignment", value: 72 }, { label: "Product quality", value: 65 }, { label: "Sustainability", value: 58 }] },
+        ],
+        barGroups: [
+          { title: "Switching Status", items: [{ label: "Loyal stayer", value: 78 }, { label: "Open to switch", value: 15 }, { label: "Actively exploring", value: 7 }] },
+        ],
+      },
+      consumerVoices: [
+        "I don't just buy products — I invest in brands that reflect who I want to become.",
+        "Quality over quantity, always. I'd rather have three perfect items than thirty mediocre ones.",
+      ],
+    },
   },
   {
     name: "The Social Connector",
@@ -29,12 +41,25 @@ const demoPersonas = [
       { label: "Influence", value: "KOC potential", icon: <TrendingUp className="h-3.5 w-3.5" /> },
     ],
     postsCount: 3876,
-    expandedDetails: [
-      { label: "Avg. Engagement", value: "12.3%" },
-      { label: "Content Pref.", value: "Short video" },
-      { label: "Peak Hours", value: "All day" },
-      { label: "Conversion", value: "★★★★☆" },
-    ],
+    expandedData: {
+      whoTheyAre: [
+        { title: "Social Activity", items: [{ label: "Daily poster", value: 55 }, { label: "Weekly sharer", value: 30 }, { label: "Occasional", value: 15 }] },
+        { title: "Content Type", items: [{ label: "UGC reviews", value: 48 }, { label: "Lifestyle posts", value: 32 }, { label: "Tutorials", value: 20 }] },
+      ],
+      brandRelationship: {
+        bulletGroups: [
+          { title: "Top Purchase Drivers", items: [{ label: "Peer recommendations", value: 80 }, { label: "Visual appeal", value: 60 }, { label: "Trending status", value: 55 }] },
+        ],
+        barGroups: [
+          { title: "Engagement Pattern", items: [{ label: "Comments & replies", value: 70 }, { label: "Shares & reposts", value: 85 }, { label: "Direct purchases", value: 35 }] },
+        ],
+      },
+      consumerVoices: [
+        "If I love something, everyone in my circle is going to know about it within the hour.",
+        "My friends trust my recommendations more than any ad — that's real influence.",
+        "I only share what I genuinely believe in. My credibility is everything.",
+      ],
+    },
   },
   {
     name: "The Value Seeker",
@@ -46,12 +71,24 @@ const demoPersonas = [
       { label: "Retention", value: "Promo-activated", icon: <Star className="h-3.5 w-3.5" /> },
     ],
     postsCount: 892,
-    expandedDetails: [
-      { label: "Avg. Engagement", value: "4.2%" },
-      { label: "Content Pref.", value: "Reviews" },
-      { label: "Peak Hours", value: "12–2 PM" },
-      { label: "Conversion", value: "★★★☆☆" },
-    ],
+    expandedData: {
+      whoTheyAre: [
+        { title: "Research Depth", items: [{ label: "Heavy researcher", value: 70 }, { label: "Moderate", value: 22 }, { label: "Impulse", value: 8 }] },
+        { title: "Decision Timeline", items: [{ label: "1-2 weeks", value: 50 }, { label: "3-7 days", value: 35 }, { label: "Same day", value: 15 }] },
+      ],
+      brandRelationship: {
+        bulletGroups: [
+          { title: "Top Purchase Drivers", items: [{ label: "Price competitiveness", value: 88 }, { label: "Reviews & ratings", value: 75 }, { label: "Promotions", value: 68 }] },
+        ],
+        barGroups: [
+          { title: "Switching Status", items: [{ label: "Price-driven switcher", value: 65 }, { label: "Conditionally loyal", value: 25 }, { label: "Brand-locked", value: 10 }] },
+        ],
+      },
+      consumerVoices: [
+        "I never buy on impulse. I compare at least five options before I commit.",
+        "A good deal isn't just about price — it's about getting the best value for every dollar.",
+      ],
+    },
   },
   {
     name: "The Trend Chaser",
@@ -63,12 +100,24 @@ const demoPersonas = [
       { label: "Influence", value: "Trendsetter", icon: <TrendingUp className="h-3.5 w-3.5" /> },
     ],
     postsCount: 2104,
-    expandedDetails: [
-      { label: "Avg. Engagement", value: "10.1%" },
-      { label: "Content Pref.", value: "Reels & Stories" },
-      { label: "Peak Hours", value: "6–9 PM" },
-      { label: "Conversion", value: "★★★★☆" },
-    ],
+    expandedData: {
+      whoTheyAre: [
+        { title: "Adoption Speed", items: [{ label: "First-day adopter", value: 42 }, { label: "Early majority", value: 38 }, { label: "Wait & see", value: 20 }] },
+        { title: "Influence Source", items: [{ label: "Social media trends", value: 60 }, { label: "Celebrity / KOL", value: 28 }, { label: "Brand campaigns", value: 12 }] },
+      ],
+      brandRelationship: {
+        bulletGroups: [
+          { title: "Top Purchase Drivers", items: [{ label: "Novelty & exclusivity", value: 82 }, { label: "Social status", value: 70 }, { label: "Visual aesthetics", value: 62 }] },
+        ],
+        barGroups: [
+          { title: "Switching Status", items: [{ label: "Always exploring", value: 72 }, { label: "Seasonal switcher", value: 20 }, { label: "Loyal to few", value: 8 }] },
+        ],
+      },
+      consumerVoices: [
+        "If it's not new, it's not for me. I live for the thrill of being first.",
+        "My feed is my portfolio — every product I share says something about who I am.",
+      ],
+    },
   },
   {
     name: "The Quiet Loyalist",
@@ -80,14 +129,27 @@ const demoPersonas = [
       { label: "Retention", value: "Organic repeat", icon: <Shield className="h-3.5 w-3.5" /> },
     ],
     postsCount: 187,
-    expandedDetails: [
-      { label: "Avg. Engagement", value: "1.8%" },
-      { label: "Content Pref.", value: "Email & DM" },
-      { label: "Peak Hours", value: "9–11 AM" },
-      { label: "Conversion", value: "★★★★★" },
-    ],
+    expandedData: {
+      whoTheyAre: [
+        { title: "Purchase Frequency", items: [{ label: "Monthly repeat", value: 58 }, { label: "Quarterly", value: 30 }, { label: "Occasional", value: 12 }] },
+        { title: "Trust Anchor", items: [{ label: "Past experience", value: 75 }, { label: "Brand reputation", value: 18 }, { label: "Word of mouth", value: 7 }] },
+      ],
+      brandRelationship: {
+        bulletGroups: [
+          { title: "Top Purchase Drivers", items: [{ label: "Consistent quality", value: 90 }, { label: "Familiarity & habit", value: 72 }, { label: "Loyalty rewards", value: 45 }] },
+        ],
+        barGroups: [
+          { title: "Switching Status", items: [{ label: "Deeply loyal", value: 82 }, { label: "Passively loyal", value: 13 }, { label: "Open to switch", value: 5 }] },
+        ],
+      },
+      consumerVoices: [
+        "I don't need to post about it. I just keep buying because it works.",
+        "Loyalty isn't about excitement — it's about trust built over years of consistency.",
+      ],
+    },
   },
 ];
+
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
@@ -111,7 +173,6 @@ const Index = () => {
             const remainder = demoPersonas.length % 3;
             const placeholders = remainder === 0 ? 0 : 3 - remainder;
             const items: React.ReactNode[] = [];
-            // Insert empty placeholders before the last incomplete row
             const insertAt = demoPersonas.length - remainder;
             demoPersonas.forEach((persona, i) => {
               if (remainder > 0 && i === insertAt) {
