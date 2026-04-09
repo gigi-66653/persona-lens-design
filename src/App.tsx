@@ -7,20 +7,22 @@ import HypothesisInput from "./pages/HypothesisInput.tsx";
 import ValidationOutput from "./pages/ValidationOutput.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
-const App = () => (
-  <TooltipProvider>
-    <Toaster />
-    <Sonner />
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Index />} />
-        <Route path="/hypothesis" element={<HypothesisInput />} />
-        <Route path="/validation" element={<ValidationOutput />} />
-        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
-  </TooltipProvider>
-);
+function App() {
+  return (
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/hypothesis" element={<HypothesisInput />} />
+          <Route path="/validation" element={<ValidationOutput />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </TooltipProvider>
+  );
+}
 
 export default App;
