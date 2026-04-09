@@ -105,7 +105,7 @@ const ValidationOutput = () => {
       <TopNav />
       <StepIndicator currentStep={3} />
 
-      <div className="relative z-10 mx-auto max-w-3xl px-6 py-8">
+      <div className="relative z-10 mx-auto w-full max-w-4xl px-6 py-8 lg:px-12">
         {/* ── Header row ── */}
         <div className="mb-8 flex items-center justify-between">
           <div className="flex items-center gap-4">

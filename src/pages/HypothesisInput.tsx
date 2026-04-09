@@ -48,7 +48,7 @@ const HypothesisInput = () => {
       <TopNav />
       <StepIndicator currentStep={2} />
 
-      <div className="relative z-10 mx-auto max-w-3xl px-6 py-8">
+      <div className="relative z-10 mx-auto w-full max-w-4xl px-6 py-8 lg:px-12">
         {/* Back + Persona info */}
         <div className="mb-8 flex items-center gap-4">
           <button

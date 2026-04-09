@@ -170,7 +170,7 @@ const Index = () => {
         <div className="absolute top-1/2 -left-40 h-80 w-80 rounded-full bg-accent/30 blur-3xl" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-5xl px-6 py-10">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-10 lg:px-12 xl:px-20">
 
         <header className="mb-10 text-center">
           <h1 className="text-3xl font-bold tracking-tight text-foreground">
