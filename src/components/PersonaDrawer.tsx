@@ -53,7 +53,7 @@ const PersonaDrawer = ({ persona, open, onClose }: PersonaDrawerProps) => {
       >
         {persona && (
           <ScrollArea className="h-full">
-            <div className="px-8 py-10 space-y-8">
+            <div className="px-12 py-10 space-y-8">
               {/* Header */}
               <div>
                 <h2 className="font-serif text-2xl font-semibold tracking-tight text-foreground">
