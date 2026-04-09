@@ -194,6 +194,11 @@ const HypothesisInput = () => {
           <Button
             className="h-14 w-full text-sm font-medium uppercase tracking-[0.15em]"
             disabled={!hypothesis.trim()}
+            onClick={() =>
+              navigate("/validation", {
+                state: { personaName, hypothesis },
+              })
+            }
           >
             <Sparkles className="mr-2 h-4 w-4" />
             Start Validation
