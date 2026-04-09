@@ -37,12 +37,12 @@ const PersonaCard = ({
         "group relative cursor-pointer rounded-2xl p-8 transition-all duration-500",
         "bg-[hsl(var(--persona-glass))] backdrop-blur-2xl",
         "border border-[hsl(var(--persona-glass-border))]",
-        "shadow-[0_8px_40px_-12px_hsl(220_15%_50%/0.08)]",
-        "hover:-translate-y-0.5 hover:shadow-[0_16px_60px_-16px_hsl(220_15%_50%/0.12)]",
+        "shadow-[0_8px_40px_-12px_hsl(215_55%_48%/0.1)]",
+        "hover:-translate-y-0.5 hover:shadow-[0_16px_60px_-16px_hsl(215_55%_48%/0.18)]",
       )}
     >
-      {/* Subtle warm overlay */}
-      <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-[hsl(220_20%_96%/0.4)] via-transparent to-[hsl(215_15%_94%/0.2)]" />
+      {/* Refined blue-tinted overlay */}
+      <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-[hsl(210_50%_95%/0.5)] via-transparent to-[hsl(220_45%_92%/0.3)]" />
 
       <div className="relative z-10">
         {/* Layer 1: Persona Name — serif, editorial */}
@@ -79,8 +79,8 @@ const PersonaCard = ({
         <div className="space-y-2.5">
           {brandRelations.map((rel) => (
             <div key={rel.label} className="flex items-center gap-2.5 text-[11px]">
-              <span className="text-muted-foreground/40">{rel.icon}</span>
-              <span className="font-medium uppercase tracking-widest text-muted-foreground">
+              <span className="text-primary/50">{rel.icon}</span>
+              <span className="font-medium uppercase tracking-widest text-primary/70">
                 {rel.label}
               </span>
               <span className="text-foreground/60">{rel.value}</span>
