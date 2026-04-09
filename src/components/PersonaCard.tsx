@@ -59,10 +59,10 @@ const PersonaCard = ({
         <div className="my-6 h-px bg-border/40" />
 
         {/* Layer 3: Core Dimensions — uppercase editorial tags */}
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
           {coreDimensions.map((dim, i) => (
             <span key={dim} className="flex items-center gap-3">
-              <span className="text-[10px] font-medium uppercase tracking-ultra-wide text-muted-foreground">
+              <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
                 {dim}
               </span>
               {i < coreDimensions.length - 1 && (
