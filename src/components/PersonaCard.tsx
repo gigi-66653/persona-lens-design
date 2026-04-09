@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { ArrowRight } from "lucide-react";
 
 export interface BarItem {
   label: string;
