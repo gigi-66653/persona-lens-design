@@ -42,6 +42,7 @@ export interface PersonaData {
 
 interface PersonaCardProps extends PersonaData {
   onSelect?: (data: PersonaData) => void;
+  onExplore?: (data: PersonaData) => void;
 }
 
 const PersonaCard = ({
@@ -52,12 +53,13 @@ const PersonaCard = ({
   postsCount,
   expandedData,
   onSelect,
+  onExplore,
 }: PersonaCardProps) => {
+  const personaData: PersonaData = { name, description, coreDimensions, brandRelations, postsCount, expandedData };
+
   return (
     <div
-      onClick={() =>
-        onSelect?.({ name, description, coreDimensions, brandRelations, postsCount, expandedData })
-      }
+      onClick={() => onSelect?.(personaData)}
       className={cn(
         "group relative cursor-pointer rounded-2xl p-8 transition-all duration-500",
         "bg-[hsl(var(--persona-glass))] backdrop-blur-2xl",
@@ -101,10 +103,16 @@ const PersonaCard = ({
           <span className="text-[10px] font-medium uppercase tracking-ultra-wide text-muted-foreground/60">
             {postsCount.toLocaleString()} posts
           </span>
-          <span className="flex items-center gap-1 text-[10px] font-medium uppercase tracking-widest text-primary/60 opacity-40 transition-all duration-300 group-hover:opacity-100">
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onExplore?.(personaData);
+            }}
+            className="flex items-center gap-1 text-[10px] font-medium uppercase tracking-widest text-primary/60 opacity-40 transition-all duration-300 hover:opacity-100 group-hover:opacity-80"
+          >
             Explore
             <ArrowRight size={12} className="transition-transform duration-300 group-hover:translate-x-1" />
-          </span>
+          </button>
         </div>
       </div>
     </div>
