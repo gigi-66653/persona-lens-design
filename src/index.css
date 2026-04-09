@@ -8,40 +8,40 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 220 20% 97%;
-    --foreground: 220 15% 20%;
+    --background: 218 25% 96%;
+    --foreground: 220 20% 16%;
 
-    --card: 220 15% 98%;
-    --card-foreground: 220 15% 20%;
+    --card: 215 30% 97%;
+    --card-foreground: 220 20% 16%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 20%;
+    --popover-foreground: 220 20% 16%;
 
-    --primary: 215 30% 45%;
-    --primary-foreground: 220 15% 98%;
+    --primary: 215 55% 48%;
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 215 15% 93%;
-    --secondary-foreground: 220 15% 30%;
+    --secondary: 212 35% 92%;
+    --secondary-foreground: 220 20% 28%;
 
-    --muted: 220 12% 93%;
-    --muted-foreground: 215 10% 50%;
+    --muted: 215 22% 92%;
+    --muted-foreground: 215 14% 46%;
 
-    --accent: 215 18% 90%;
-    --accent-foreground: 220 15% 25%;
+    --accent: 210 40% 88%;
+    --accent-foreground: 220 22% 22%;
 
-    --destructive: 0 60% 50%;
+    --destructive: 0 65% 52%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 15% 90%;
-    --input: 220 15% 90%;
-    --ring: 215 30% 45%;
+    --border: 215 25% 88%;
+    --input: 215 25% 88%;
+    --ring: 215 55% 48%;
 
     --radius: 1rem;
 
-    --persona-glass: 220 15% 99% / 0.7;
-    --persona-glass-border: 220 12% 88% / 0.5;
-    --persona-tag: 215 20% 94%;
-    --persona-tag-foreground: 215 15% 40%;
+    --persona-glass: 215 30% 98% / 0.72;
+    --persona-glass-border: 215 25% 86% / 0.5;
+    --persona-tag: 215 40% 92%;
+    --persona-tag-foreground: 215 35% 38%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
