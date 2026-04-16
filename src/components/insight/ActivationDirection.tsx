@@ -169,20 +169,18 @@ const ActivationDirection = ({ onExportBrief }: ActivationDirectionProps) => {
                 </div>
                 <div>
                   <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground/60">Supporting Insights</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {d.supporting.map((s) => <DimensionChip key={s} label={s} />)}
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex flex-wrap gap-1.5">
+                      {d.supporting.map((s) => <DimensionChip key={s} label={s} />)}
+                    </div>
+                    <button
+                      onClick={() => onExportBrief(d.title)}
+                      className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-primary px-4 py-1.5 text-[12px] font-medium text-primary transition-all hover:bg-primary/10 hover:shadow-sm"
+                    >
+                      Export Brief <ArrowRight className="h-3.5 w-3.5" />
+                    </button>
                   </div>
                 </div>
-              </div>
-
-              {/* Export Brief button */}
-              <div className="mt-5 border-t border-border/40 pt-4">
-                <button
-                  onClick={() => onExportBrief(d.title)}
-                  className="flex items-center gap-1.5 text-[12px] font-medium text-primary transition-colors hover:text-primary/80"
-                >
-                  Export Brief <ArrowRight className="h-3.5 w-3.5" />
-                </button>
               </div>
             </div>
           ))}
