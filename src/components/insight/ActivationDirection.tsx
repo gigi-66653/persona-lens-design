@@ -1,7 +1,11 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { Download } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+
+interface ActivationDirectionProps {
+  onExportBrief?: (directionTitle: string) => void;
+}
 
 /* ── Mock Data ── */
 const tensions = [
