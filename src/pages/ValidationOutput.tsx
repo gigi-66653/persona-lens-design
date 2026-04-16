@@ -339,7 +339,7 @@ const ValidationOutput = () => {
         </section>
 
         {/* ── 7. Campaign Recommendations (Track B) ── */}
-        <section className="mb-10 rounded-2xl border border-border/60 bg-card p-8 shadow-sm">
+        <section className="mb-6 rounded-2xl border border-border/60 bg-card p-8 shadow-sm">
           <div className="mb-6 flex items-center gap-2.5">
             <Send className="h-5 w-5 text-rose-500" />
             <h2 className="font-serif text-lg font-semibold tracking-tight text-foreground">
@@ -367,6 +367,19 @@ const ValidationOutput = () => {
             ))}
           </div>
         </section>
+
+        {/* ── Unlock Insight Activation ── */}
+        <Button
+          className="mb-10 h-14 w-full bg-primary text-primary-foreground text-sm font-medium uppercase tracking-[0.15em] hover:bg-primary/90"
+          onClick={() =>
+            navigate("/activation", {
+              state: { personaName },
+            })
+          }
+        >
+          Unlock Insight Activation
+          <ArrowRight className="ml-2 h-4 w-4" />
+        </Button>
       </div>
     </div>
   );
