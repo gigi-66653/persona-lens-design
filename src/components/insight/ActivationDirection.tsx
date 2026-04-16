@@ -175,9 +175,9 @@ const ActivationDirection = ({ onExportBrief }: ActivationDirectionProps) => {
                     </div>
                     <button
                       onClick={() => onExportBrief(d.title)}
-                      className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-primary px-4 py-1.5 text-[12px] font-medium text-primary transition-all hover:bg-primary/10 hover:shadow-sm"
+                      className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-gray-700 px-4 py-1.5 text-[12px] font-medium text-white shadow-sm transition-all hover:bg-gray-800 hover:shadow-md"
                     >
-                      Export Brief <ArrowRight className="h-3.5 w-3.5" />
+                      Generate Brief <ArrowRight className="h-3.5 w-3.5" />
                     </button>
                   </div>
                 </div>
