@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import HypothesisInput from "./pages/HypothesisInput.tsx";
 import ValidationOutput from "./pages/ValidationOutput.tsx";
+import InsightActivation from "./pages/InsightActivation.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Index />} />
           <Route path="/hypothesis" element={<HypothesisInput />} />
           <Route path="/validation" element={<ValidationOutput />} />
+          <Route path="/activation" element={<InsightActivation />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

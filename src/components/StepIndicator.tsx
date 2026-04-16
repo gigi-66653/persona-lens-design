@@ -4,6 +4,7 @@ const steps = [
   { number: 1, title: "Persona Scope", subtitle: "Select target personas" },
   { number: 2, title: "Hypothesis Input", subtitle: "Define your hypothesis" },
   { number: 3, title: "Validation Output", subtitle: "Review validation results" },
+  { number: 4, title: "Insight Activation", subtitle: "Activate insights" },
 ];
 
 interface StepIndicatorProps {
