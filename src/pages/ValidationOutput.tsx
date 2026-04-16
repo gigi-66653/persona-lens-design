@@ -75,23 +75,6 @@ const refinedHypotheses = [
   },
 ];
 
-const campaignRecs = [
-  {
-    title: "Launch 'Trace the Source' interactive mini-program",
-    priority: "High",
-    evidence: "Origin transparency scored 96 — highest among all trust drivers. An interactive traceability experience converts latent trust into engagement.",
-  },
-  {
-    title: "Partner with parenting KOLs for ingredient deep-dive content",
-    priority: "High",
-    evidence: "Peer validation is the #1 purchase accelerator (42% attribution). Expert-endorsed content amplifies both trust and shareability.",
-  },
-  {
-    title: "A/B test 'clinically tested' vs 'organic' badge on PDP pages",
-    priority: "Medium",
-    evidence: "Counterfactual signal shows framing swap reverses trust ranking — a low-cost experiment with high diagnostic value.",
-  },
-];
 
 const reasoningSteps = [
   "Parsed hypothesis statement and extracted 3 key constructs",
