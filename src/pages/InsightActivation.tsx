@@ -7,8 +7,9 @@ import FiveCAnalysis from "@/components/insight/FiveCAnalysis";
 import ActivationDirection from "@/components/insight/ActivationDirection";
 import InsightChatbot from "@/components/insight/InsightChatbot";
 import CreativeBriefPanel from "@/components/insight/CreativeBriefPanel";
-import { ArrowLeft, Sparkles } from "lucide-react";
+import { ArrowLeft, Sparkles, Bookmark } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 type ActivePanel = "none" | "chatbot" | "brief";
 
@@ -50,15 +51,29 @@ const InsightActivation = () => {
             Back
           </button>
 
-          <Button
-            variant="outline"
-            size="sm"
-            className="text-[11px] uppercase tracking-[0.12em]"
-            onClick={() => navigate("/")}
-          >
-            <Sparkles className="mr-1.5 h-3.5 w-3.5" />
-            New Validation
-          </Button>
+          <div className="flex items-center gap-3">
+            <Button
+              variant="outline"
+              size="sm"
+              className="text-[11px] uppercase tracking-[0.12em] text-muted-foreground"
+              onClick={() => {
+                toast("Save feature coming soon — your analysis is available during this session.");
+              }}
+            >
+              <Bookmark className="mr-1.5 h-3.5 w-3.5" />
+              Save Analysis
+            </Button>
+
+            <Button
+              variant="outline"
+              size="sm"
+              className="text-[11px] uppercase tracking-[0.12em]"
+              onClick={() => navigate("/")}
+            >
+              <Sparkles className="mr-1.5 h-3.5 w-3.5" />
+              New Validation
+            </Button>
+          </div>
         </div>
 
         <FiveCAnalysis />
