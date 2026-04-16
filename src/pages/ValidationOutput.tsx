@@ -15,8 +15,6 @@ import {
   Sparkles,
   ArrowRight,
   FileText,
-  BarChart2,
-  Quote,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
