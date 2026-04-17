@@ -108,6 +108,7 @@ const InsightActivation = () => {
           insightState={insightState}
           onInsightStateChange={setInsightState}
           onStatsChange={setStats}
+          showGuides={generation !== "ready"}
         />
 
         <div className="my-10 h-px bg-border/60" />
