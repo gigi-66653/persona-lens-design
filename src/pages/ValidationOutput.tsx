@@ -19,6 +19,12 @@ import {
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 /* ── mock data ─────────────────────────────────────────── */
 
@@ -44,13 +50,16 @@ const counterfactuals = [
 ];
 
 const evidenceContext = {
-  sufficiency: "Sufficient",
+  sufficiency: {
+    hitCount: 47,
+    totalCount: 112,
+  },
   coverage: "Sample covers parenting stages 0–6M (62%) and 6–12M (38%); feeding modality split: breast-to-formula transition (71%), formula-only (29%).",
   quotes: [
-    { text: "I always check where the milk powder comes from — if it's from a trusted European source, I feel safer.", sentiment: "positive" },
-    { text: "The ingredient list looked clean but I couldn't find any third-party lab reports, which made me hesitate.", sentiment: "negative" },
-    { text: "My pediatrician recommended this brand and the forums confirmed it — that's what convinced me.", sentiment: "positive" },
-    { text: "Too expensive for what it is. I switched to a cheaper organic brand and saw no difference.", sentiment: "negative" },
+    { text: "I always check where the milk powder comes from — if it's from a trusted European source, I feel safer.", sentiment: "positive", confidence: 0.92 },
+    { text: "My pediatrician recommended this brand and the forums confirmed it — that's what convinced me.", sentiment: "positive", confidence: 0.87 },
+    { text: "The ingredient list looked clean but I couldn't find any third-party lab reports, which made me hesitate.", sentiment: "negative", confidence: 0.84 },
+    { text: "Too expensive for what it is. I switched to a cheaper organic brand and saw no difference.", sentiment: "negative", confidence: 0.79 },
   ],
   platformDistribution: [
     { platform: "Netmoms.de", pct: 38 },
@@ -297,10 +306,25 @@ const ValidationOutput = () => {
           </div>
 
           {/* Sufficiency */}
-          <div className="mb-5">
-            <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground/70">Material Sufficiency</p>
-            <Badge className="bg-emerald-500/10 text-emerald-600 border-emerald-500/20 hover:bg-emerald-500/10">{evidenceContext.sufficiency}</Badge>
-          </div>
+          {(() => {
+            const { hitCount, totalCount } = evidenceContext.sufficiency;
+            const ratio = hitCount / totalCount;
+            const pct = Math.round(ratio * 100);
+            const tier =
+              ratio >= 0.3
+                ? { label: "Sufficient", cls: "bg-emerald-500/10 text-emerald-600 border-emerald-500/20 hover:bg-emerald-500/10" }
+                : ratio >= 0.1
+                  ? { label: "Moderate", cls: "bg-amber-500/10 text-amber-600 border-amber-500/20 hover:bg-amber-500/10" }
+                  : { label: "Insufficient", cls: "bg-destructive/10 text-destructive border-destructive/20 hover:bg-destructive/10" };
+            return (
+              <div className="mb-5">
+                <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground/70">Material Sufficiency</p>
+                <Badge className={tier.cls}>
+                  {tier.label} — {hitCount} / {totalCount} posts, {pct}%
+                </Badge>
+              </div>
+            );
+          })()}
 
           {/* Coverage */}
           <div className="mb-5">
@@ -308,20 +332,40 @@ const ValidationOutput = () => {
             <p className="text-sm leading-relaxed text-foreground/85">{evidenceContext.coverage}</p>
           </div>
 
-          {/* Representative Quotes */}
+          {/* Representative Quotes — Accordion */}
           <div className="mb-5">
-            <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground/70">Representative Quotes</p>
-            <div className="space-y-2.5">
-              {evidenceContext.quotes.map((q, i) => (
-                <div key={i} className={`border-l-2 py-2 pl-4 pr-3 rounded-r ${
-                  q.sentiment === "positive"
-                    ? "border-emerald-500/50 bg-emerald-500/5"
-                    : "border-destructive/50 bg-destructive/5"
-                }`}>
-                  <p className="font-serif text-[13px] italic leading-relaxed text-foreground/80">"{q.text}"</p>
-                </div>
-              ))}
-            </div>
+            <Accordion type="single" collapsible>
+              <AccordionItem value="quotes" className="border-b-0">
+                <AccordionTrigger className="py-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground/70 hover:no-underline">
+                  Supporting Quotes ({evidenceContext.quotes.length})
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-2.5 pt-2">
+                    {[...evidenceContext.quotes]
+                      .sort((a, b) => b.confidence - a.confidence)
+                      .map((q, i) => {
+                        const borderCls =
+                          q.sentiment === "positive"
+                            ? "border-emerald-500/50 bg-emerald-500/5"
+                            : q.sentiment === "negative"
+                              ? "border-destructive/50 bg-destructive/5"
+                              : "border-muted-foreground/30 bg-muted/30";
+                        const text = q.text.length > 200 ? q.text.slice(0, 200) + "…" : q.text;
+                        return (
+                          <div key={i} className={`border-l-2 py-2 pl-4 pr-3 rounded-r ${borderCls}`}>
+                            <div className="flex items-start justify-between gap-3">
+                              <p className="font-serif text-[13px] italic leading-relaxed text-foreground/80">"{text}"</p>
+                              <span className="shrink-0 text-[10px] font-medium text-muted-foreground/60 tabular-nums">
+                                {q.confidence.toFixed(2)}
+                              </span>
+                            </div>
+                          </div>
+                        );
+                      })}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
 
           {/* Platform Distribution */}
