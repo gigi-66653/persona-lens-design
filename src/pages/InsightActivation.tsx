@@ -3,15 +3,27 @@ import { useNavigate, useLocation } from "react-router-dom";
 import TopNav from "@/components/TopNav";
 import StepIndicator from "@/components/StepIndicator";
 import ContextBar from "@/components/insight/ContextBar";
-import FiveCAnalysis from "@/components/insight/FiveCAnalysis";
+import FiveCAnalysis, {
+  buildInitialInsightState,
+  type ApprovalStats,
+  type InsightStateMap,
+} from "@/components/insight/FiveCAnalysis";
 import ActivationDirection from "@/components/insight/ActivationDirection";
 import InsightChatbot from "@/components/insight/InsightChatbot";
 import CreativeBriefPanel from "@/components/insight/CreativeBriefPanel";
-import { ArrowLeft, Sparkles, Bookmark } from "lucide-react";
+import { ArrowLeft, Sparkles, Bookmark, Loader2, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 
 type ActivePanel = "none" | "chatbot" | "brief";
+type GenerationStatus = "idle" | "generating" | "ready";
+
+const tabLabel: Record<string, string> = {
+  culture: "Culture",
+  category: "Category",
+  connection: "Connection",
+  company: "Company",
+};
 
 const InsightActivation = () => {
   const navigate = useNavigate();
@@ -20,6 +32,14 @@ const InsightActivation = () => {
 
   const [activePanel, setActivePanel] = useState<ActivePanel>("none");
   const [briefDirection, setBriefDirection] = useState("");
+
+  const [insightState, setInsightState] = useState<InsightStateMap>(() => buildInitialInsightState());
+  const [stats, setStats] = useState<ApprovalStats | null>(null);
+  const [generation, setGeneration] = useState<GenerationStatus>("idle");
+
+  const lowDataTabs = stats?.lowDataTabs ?? [];
+  const approvedCount = stats?.totalApproved ?? 0;
+  const rejectedCount = stats?.totalRejected ?? 0;
 
   const handleOpenBrief = (directionTitle: string) => {
     setBriefDirection(directionTitle);
@@ -32,6 +52,14 @@ const InsightActivation = () => {
 
   const handleCloseBrief = () => {
     setActivePanel("none");
+  };
+
+  const handleConfirmGenerate = () => {
+    setGeneration("generating");
+    // Simulated P8 generation
+    setTimeout(() => {
+      setGeneration("ready");
+    }, 1200);
   };
 
   return (
@@ -76,11 +104,65 @@ const InsightActivation = () => {
           </div>
         </div>
 
-        <FiveCAnalysis />
+        <FiveCAnalysis
+          insightState={insightState}
+          onInsightStateChange={setInsightState}
+          onStatsChange={setStats}
+        />
 
         <div className="my-10 h-px bg-border/60" />
 
-        <ActivationDirection onExportBrief={handleOpenBrief} />
+        {generation !== "ready" ? (
+          <section>
+            <h2 className="mb-6 font-serif text-2xl font-semibold tracking-tight text-foreground">
+              Activation Direction
+            </h2>
+            <div className="rounded-2xl border border-dashed border-border/70 bg-muted/30 px-8 py-12 text-center shadow-sm">
+              <p className="mx-auto max-w-md text-sm leading-relaxed text-foreground/80">
+                Review the 5C analysis above, then confirm to generate Activation Directions.
+              </p>
+
+              {lowDataTabs.length > 0 && (
+                <div className="mx-auto mt-5 inline-flex max-w-lg items-start gap-2 rounded-md border border-amber-300/60 bg-amber-50 px-3 py-2 text-left text-[12px] leading-relaxed text-amber-800">
+                  <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+                  <span>
+                    {lowDataTabs.map((t) => tabLabel[t]).join(", ")}{" "}
+                    {lowDataTabs.length === 1 ? "has" : "have"} limited validated data.
+                    Direction confidence may be lower.
+                  </span>
+                </div>
+              )}
+
+              <div className="mt-7">
+                <button
+                  onClick={handleConfirmGenerate}
+                  disabled={generation === "generating"}
+                  className="inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-3 text-[13px] font-medium text-background shadow-sm transition-all hover:bg-foreground/90 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-70"
+                >
+                  {generation === "generating" ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      Generating...
+                    </>
+                  ) : (
+                    <>
+                      Confirm &amp; Generate
+                      <span aria-hidden>→</span>
+                    </>
+                  )}
+                </button>
+              </div>
+
+              {stats && (
+                <p className="mt-4 text-[11px] uppercase tracking-[0.12em] text-muted-foreground/70">
+                  {approvedCount} insight{approvedCount === 1 ? "" : "s"} approved · {rejectedCount} rejected across 4 dimensions
+                </p>
+              )}
+            </div>
+          </section>
+        ) : (
+          <ActivationDirection onExportBrief={handleOpenBrief} />
+        )}
       </div>
 
       <InsightChatbot
